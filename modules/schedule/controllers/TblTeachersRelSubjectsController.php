@@ -84,8 +84,16 @@ class TblTeachersRelSubjectsController extends BaseController
                         $items = new TblTeachersRelSubjects();
                         $items->attributes = $data;
                         $items->teachers_id = $modelOne['id'];
-                        if ($items->save()) {
-                            $saved = true;
+                        $conditional = TblTeachersRelSubjects::find()
+                            ->alias('ttrs')
+                            ->where(['and',['=','ttrs.teachers_id',$items->teachers_id],['=','ttrs.subjects_id',$items->subjects_id]])
+                            ->all();
+                        if(!$conditional){
+                            if ($items->save()) {
+                                $saved = true;
+                            } else {
+                                $saved = false;
+                            }
                         } else {
                             $saved = false;
                         }
@@ -152,7 +160,7 @@ class TblTeachersRelSubjectsController extends BaseController
                     }
 
                     if ($saved) {
-                        Yii::$app->session->setFlash("success", 'Ma\'lumot saqlandi');
+                        Yii::$app->session->setFlash("success",Yii::t('app', 'Ma\'lumot saqlandi'));
                         $transaction->commit();
                         return $this->redirect(['index']);
                     }

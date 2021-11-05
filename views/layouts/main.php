@@ -67,22 +67,23 @@ $bundle = yiister\gentelella\assets\Asset::register($this);
                         $module = Yii::$app->controller->module->id;
                         $controller = Yii::$app->controller->id;
                         $action = Yii::$app->controller->action->id;
-                        $slug = Yii::$app->request->get('slug');
-                        $level = Yii::$app->request->get('level');
-                        $type = Yii::$app->request->get('type');
+//                        $slug = Yii::$app->request->get('slug');
+//                        $level = Yii::$app->request->get('level');
+//                        $type = Yii::$app->request->get('type');
 
                         echo Menu::widget(
                             [
                                 "items" => [
-                                    [
-                                        'label' => Yii::t('app', 'Admin'),
-                                        'url' => '/schedule/tbl-teachers/index',
-                                        'icon' => 'user ',],
-                                    [
-                                        'label' => Yii::t('app', 'Dars jadval'),
-                                        'url' => '/schedule/tbl-teachers/dashboard',
-                                        'icon' => 'list-ul',
-                                    ],
+//                                    [
+//                                        'label' => Yii::t('app', 'Admin'),
+//                                        'url' => '/schedule/tbl-teachers/index',
+//                                        'icon' => 'user ',
+//                                    ],
+//                                    [
+//                                        'label' => Yii::t('app', 'Dars jadval'),
+//                                        'url' => '/schedule/tbl-teachers/dashboard',
+//                                        'icon' => 'list-ul',
+//                                    ],
                                     [
                                         'label' => Yii::t('app', 'Dars jadvalini tuzish'),
                                         'url' => ['#'],
